@@ -1,38 +1,294 @@
-.App {
-  text-align: center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a {
+    color: inherit;
+    text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+    width: 93%;
+    margin: auto;
+    padding: 0 15px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+
+/*************** HEADER section ***************/
+header {
+    padding: 10px 0;
+    width: 100%;
+    top: 0;
+    z-index: 9;
+    position: absolute;
+    background: rgba(255, 254, 254, .75);
+}
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header .navbar-logo {
+    width: 100px;
+}
+header .navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+header .navbar-icons svg {
+    width: 24px;
+    height: 24px;
+    fill: #3f418e;
+}
+header .navbar-icons .call-center {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+header .navbar-icons .call-center p {
+    display: inline-block;
+    color: #3f418e;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 24px;
 }
 
-.App-link {
-  color: #61dafb;
+.call-center-box {
+    width: 50%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    display: flex;
+    flex-direction: row;
+    padding: 70px 10px;
+    z-index: 9;
+}
+.call-center-box svg {
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
+.call-center-box div {
+    width: 50%;
+    padding-left: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.call-center-box div h3 {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #3f418e;
+    font-weight: 900;
+}
+.call-center-box div a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 1.3px;
+    text-decoration-line: underline;
+    text-transform: uppercase;
+    color: #3f418e;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    width: 375px;
+    height: 100vh;
+    background: #3f418e;
+    padding: 100px 0 0;
+    gap: 50px;
+    top: 0;
+    right: 0;
+    z-index: 9;
+}
+.hamburger-menu svg {
+    position: absolute;
+    top: 35px;
+    left: 50px;
+}
+.hamburger-menu .links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.hamburger-menu .links a {
+    color: #fff;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.3px;
+    padding: 15px 15px 15px 70px;
+    width: 100%;
+}
+.hamburger-menu .links a:hover {
+    background: rgba(0, 0, 0, .1);
+}
+
+
+
+/*************** HOME PAGE ***************/
+main {
+    position: relative;
+}
+main .text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding: 20px 30px;
+}
+main .text > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(80, 78, 184, .74);
+    background: rgba(63, 64, 152, .7);
+    filter: blur(9.5px);
+}
+main .text p {
+    position: relative;
+    color: #fff;
+    text-shadow: 0 4px 4px rgba(0, 0, 0, .25), 0 4px 4px rgba(0, 0, 0, .25);
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: 2px;
+    z-index: 2;
+    width: 100%;
+    white-space: nowrap;
+}
+main .places {
+    display: flex;
+    height: 100%;
+}
+main .places a {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+main .places a > div {
+    height: 100vh;
+    background-size: cover;
+    transition: .5s;
+}
+main .places a:hover > div {
+    transform: scale(1.2);
+    
+}
+main .places a h3 {
+    color: #fff;
+    position: absolute;
+    top: 80%;
+    left: 7%;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: Arial, Helvetica, sans-serif;
+}
+main .places a:last-child h3 {
+    left: auto;
+    right: 7% !important;
+}
+
+
+
+/*************** ABOUT PAGE ***************/
+main .banner {
+    height: 60vh;
+}
+main .banner .container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+main .banner h2{
+    color: #3f418e;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+main .about-text {
+    padding: 90px 0;
+}
+main .about-text p {
+    text-align: center;
+    color: #626262;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px;
+}
+
+
+
+/*************** FOOTER section ***************/
+footer {
+    padding: 10px 0;
+    width: 100%;
+    bottom: 0;
+    z-index: 1;
+    position: relative;
+    background: rgba(255, 254, 254, .75);
+}
+footer .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+footer .text {
+    display: flex;
+    gap: 32px;
+}
+footer .text p {
+    color: #3f418e;
+    line-height: normal;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+}
+footer .social-medias {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+footer .social-medias a {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #3f418e;
 }
