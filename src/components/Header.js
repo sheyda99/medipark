@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import Logo from '../assets/images/medipark.webp';
+import { fetchData } from '../utils/fetchData';
 
 const Header = () => {
+  const [places, setPlaces] = useState([]);
+  useEffect(() => {
+    const fetchPlaceData = async () => {
+      const data = await fetchData('https://www.api.medipark.az/place/');
+      setPlaces([...data]);
+    }
+    fetchPlaceData();
+  }, []);
+
   const [isCallCenterBoxVisible, setIsCallCenterBoxVisible] = useState(false);
   const openCloseCallCenterBox = () => {
     setIsCallCenterBoxVisible(!isCallCenterBoxVisible);
@@ -38,16 +48,13 @@ const Header = () => {
           <Link to='#' onClick={ openCloseCallCenterBox }>
             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="43" viewBox="0 0 40 43" fill="none"><path d="M30 10.5714L10 31.7143" stroke="#3f418e" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"></path><path d="M10 10.5714L30 31.7143" stroke="#3f418e" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"></path></svg>
           </Link>
-          <div>
-            <h3>Bakı</h3>
-            <a href="tel:+994 55 540 02 75">+994 55 540 02 75</a>
-            <a href="tel:+994 12 541 54 40">+994 12 541 54 40</a>
-          </div>
-          <div>
-            <h3>Mingəçevir</h3>
-            <a href="tel:+994 50 234 50 63">+994 50 234 50 63</a>
-            <a href="tel:+994 24 275 57 55">+994 24 275 57 55</a>
-          </div>
+          {places.map((place, index) => (
+            <div key={index}>
+              <h3>{place.title}</h3>
+              <a href={`tel:${place.mobile_phone}`}>{place.mobile_phone}</a>
+              <a href={`tel:${place.mobile_phone}`}>{place.city_phone}</a>
+            </div>
+          ))}
         </div>
       }
 

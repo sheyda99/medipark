@@ -15,6 +15,15 @@ a {
     padding: 0 15px;
 }
 
+.not-found {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3f418e;
+    font-size: 50px;
+    font-weight: 700;
+}
 
 /*************** HEADER section ***************/
 header {

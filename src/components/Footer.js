@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { fetchData } from '../utils/fetchData';
+
 const Footer = () => {
+  const [socialMedias, setSocialMedias] = useState([]);
+  useEffect(() => {
+    const fetchSocialMediasData = async () => {
+      const data = await fetchData('https://www.api.medipark.az/social-media/');
+      setSocialMedias([...data]);
+    }
+    fetchSocialMediasData();
+  }, []);
+
   return (
     <footer>
       <div className='container'>
@@ -10,18 +21,11 @@ const Footer = () => {
           <p>Site by Starcom</p>
         </div>
         <div className='social-medias'>
-          <Link to='#' target='_blank'>
-            <img src='https://www.api.medipark.az/uploads/social_media_icon/instagram_2.webp' alt='İnstagram Bakı' />
-          </Link>
-          <Link to='#' target='_blank'>
-            <img src='https://www.api.medipark.az/uploads/social_media_icon/facebook_3.webp' alt='Facebook' />
-          </Link>
-          <Link to='#' target='_blank'>
-            <img src='https://www.api.medipark.az/uploads/social_media_icon/instagram_2_gkVXEgx.webp' alt='İnstagram Mİngəçevir' />
-          </Link>
-          <Link to='#' target='_blank'>
-            <img src='https://www.api.medipark.az/uploads/social_media_icon/whatsapp.webp' alt='WP' />
-          </Link>
+          {socialMedias.map((socialMedia, index) => (
+            <Link key={index} to={`${socialMedia.link}`} target='_blank'>
+              <img src={`${socialMedia.icon}`} alt={`${socialMedia.title}`} />
+            </Link>
+          ))}
         </div>
       </div>
     </footer>

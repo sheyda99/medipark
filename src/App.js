@@ -6,18 +6,20 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
+import NotFound from './pages/NotFound';
 
 const App = () => {
   return (
     <div>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/haqqimizda" element={<About />}></Route>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/haqqimizda" element={<About />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
   )
 }
 
-export default App
+export default App;
